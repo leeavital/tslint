@@ -72,6 +72,7 @@ module.exports = function (grunt) {
             bin: {
                 src: [
                     "typings/*.d.ts",
+                    "src/language/walker/syntaxWalker.ts",
                     "src/language/**/*.ts",
                     "src/*.ts",
                 ],
