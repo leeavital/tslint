@@ -12,13 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-echo "Running grunt target"
-
-# build and run unit tests
-grunt
-
-
-
 echo "Checking tslint binary"
 # make sure calling tslint with no args exits correctly.
 node ./bin/tslint &> /dev/null
