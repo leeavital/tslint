@@ -14,10 +14,11 @@
 
 echo "Checking tslint binary"
 # make sure calling tslint with no args exits correctly.
-node bin/tslint &> /dev/null
-if [ $? != 1 ]
+node bin/tslint
+out=$?
+if [ $out != 1 ]
 then
-  echo "tslint with no args did not exit with a 1"
+  echo "tslint with no args did not exit with a 1, got $out"
   exit 1
 fi
 
@@ -25,18 +26,20 @@ fi
 
 # make sure calling tslint with a good file exits correctly.
 node bin/tslint -f src/configuration.ts
-if [ $? != 0 ]
+out=$?
+if [ $out != 0 ]
 then
-  echo "tslint with a good file did not exit with a 0"
+  echo "tslint with a good file did not exit with a 0, got $out"
   exit 1
 fi
 
 
 # make sure calling tslint with a bad file exits correctly
-node bin/tslint -f test/files/rules/ban.test.ts -c tslint.json &> /dev/null
-if [ $? != 2 ]
+node bin/tslint -f test/files/rules/ban.test.ts -c tslint.json
+out=$?
+if [ $out != 2 ]
 then
-  echo "tslint with a bad file did not exit with a 2"
+  echo "tslint with a bad file did not exit with a 2, got $out"
   exit 1
 fi
 
