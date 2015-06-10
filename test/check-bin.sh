@@ -19,6 +19,9 @@
 
 echo "Checking tslint binary"
 
+grunt core
+grunt bin
+
 # make sure calling tslint with no args exits correctly.
 node ./bin/tslint &> /dev/null
 if [ $? != 1 ]
