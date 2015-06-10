@@ -1,10 +1,10 @@
 "use strict";
 
-var checkBin;
-if (process.platform  === "win32") {
-    checkBin = "echo \"Windows does not have this test yet\"";
+var binTask;
+if (true || process.platform  === "win32") {
+    binTask = [];
 } else {
-    checkBin = "./test/check-bin.sh";
+    binTask = ["run:test"];
 }
 
 module.exports = function (grunt) {
@@ -45,7 +45,7 @@ module.exports = function (grunt) {
 
         run: {
             test: {
-                cmd: checkBin
+                cmd: "./test/check-bin.sh"
             }
         },
 
@@ -160,7 +160,7 @@ module.exports = function (grunt) {
     // register custom tasks
     grunt.registerTask("core", ["clean:core", "ts:core", "concat:core", "ts:core_rules", "ts:core_formatters"]);
     grunt.registerTask("bin", ["clean:bin", "ts:bin", "tslint:src", "concat:bin"]);
-    grunt.registerTask("test", ["clean:test", "ts:test", "tslint:test", "concat:test", "mochaTest", "run:test"]);
+    grunt.registerTask("test", ["clean:test", "ts:test", "tslint:test", "concat:test", "mochaTest"].concat(binTask));
 
     // create default task
     grunt.registerTask("default", ["jscs", "core", "bin", "test"]);
