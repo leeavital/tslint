@@ -4,7 +4,7 @@ var checkBin;
 if (process.platform  === "win32") {
     checkBin = "echo \"Windows does not have this test yet\"";
 } else {
-    checkBin = "./test/run-tests.sh";
+    checkBin = "./test/check-bin.sh";
 }
 
 module.exports = function (grunt) {
