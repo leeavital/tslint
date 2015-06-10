@@ -46,6 +46,12 @@ module.exports = function (grunt) {
             }
         },
 
+        run: {
+            test: {
+                cmd: "./test/check-bin.sh"
+            }
+        },
+
         tslint: {
             options: {
                 configuration: grunt.file.readJSON("tslint.json")
@@ -140,13 +146,14 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks("grunt-contrib-concat");
     grunt.loadNpmTasks("grunt-jscs");
     grunt.loadNpmTasks("grunt-mocha-test");
+    grunt.loadNpmTasks("grunt-run");
     grunt.loadNpmTasks("grunt-tslint");
     grunt.loadNpmTasks("grunt-ts");
 
     // register custom tasks
     grunt.registerTask("core", ["clean:core", "ts:core", "concat:core", "ts:core_rules", "ts:core_formatters"]);
     grunt.registerTask("bin", ["clean:bin", "ts:bin", "tslint:src", "concat:bin"]);
-    grunt.registerTask("test", ["clean:test", "ts:test", "tslint:test", "concat:test", "mochaTest"]);
+    grunt.registerTask("test", ["clean:test", "ts:test", "tslint:test", "concat:test", "mochaTest", "run:test"]);
 
     // create default task
     grunt.registerTask("default", ["jscs", "core", "bin", "test"]);
