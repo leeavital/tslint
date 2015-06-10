@@ -1,7 +1,7 @@
 "use strict";
 
 var binTask;
-if (true || process.platform  === "win32") {
+if (process.platform  === "win32") {
     binTask = [];
 } else {
     binTask = ["run:test"];
