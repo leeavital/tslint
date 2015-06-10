@@ -74,7 +74,8 @@ module.exports = function (grunt) {
                     "typings/*.d.ts",
                     "src/language/walker/syntaxWalker.ts",
                     "src/language/**/*.ts",
-                    "src/*.ts",
+                    "src/!(tslint-cli).ts",
+                    "src/tslint-cli.ts"
                 ],
                 out: "bin/tslint-cli.js"
             },
