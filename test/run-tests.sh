@@ -12,16 +12,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+echo "Running grunt target"
 
-# ensure that the tslint executable is working correctly
-#
-# this file can only be run from the project root
+# build and run unit tests
+grunt
+
+
 
 echo "Checking tslint binary"
-
-grunt core
-grunt bin
-
 # make sure calling tslint with no args exits correctly.
 node ./bin/tslint &> /dev/null
 if [ $? != 1 ]
